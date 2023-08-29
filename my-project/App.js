@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import axios from 'axios'
 import { ListItem } from 'react-native-elements'
+import { Picker } from '@react-native-picker/picker'
 
 const App = () => {
   const [destination, setDestination] = useState('')
@@ -37,22 +38,27 @@ const App = () => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Destination"
+        placeholder="Floor"
         value={destination}
         onChangeText={setDestination}
       />
       <TextInput
         style={styles.input}
-        placeholder="Check-in date"
+        placeholder="Period"
         value={checkIn}
         onChangeText={setCheckIn}
       />
-      <TextInput
+      <Picker
         style={styles.input}
-        placeholder="Check-out date"
-        value={checkOut}
-        onChangeText={setCheckOut}
-      />
+        selectedValue={checkOut}
+        onValueChange={(itemValue, itemIndex) => setCheckOut(itemValue)}
+      >
+        <Picker.Item label="Purpose" />
+        <Picker.Item label="Meeting" />
+        <Picker.Item label="Group Project" />
+        <Picker.Item label="Lab Work" />
+      </Picker>
+
       <Button title="Search" onPress={handleSearch} />
 
       <FlatList
