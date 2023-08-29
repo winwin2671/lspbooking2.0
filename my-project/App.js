@@ -53,7 +53,7 @@ const App = () => {
         selectedValue={checkOut}
         onValueChange={(itemValue, itemIndex) => setCheckOut(itemValue)}
       >
-        <Picker.Item label="Purpose" />
+        <Picker.Item label="Select a Purpose" />
         <Picker.Item label="Meeting" />
         <Picker.Item label="Group Project" />
         <Picker.Item label="Lab Work" />
