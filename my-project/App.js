@@ -36,18 +36,45 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
+      <Picker
         style={styles.input}
-        placeholder="Floor"
-        value={destination}
-        onChangeText={setDestination}
-      />
-      <TextInput
+        selectedValue={checkOut}
+        onValueChange={(itemValue, itemIndex) => setCheckOut(itemValue)}
+      >
+        <Picker.Item label="Floor" />
+        <Picker.Item label="Floor 1" />
+        <Picker.Item label="Floor 2" />
+        <Picker.Item label="Floor 3" />
+        <Picker.Item label="Floor 4" />
+        <Picker.Item label="Floor 5" />
+      </Picker>
+      <Picker
         style={styles.input}
-        placeholder="Period"
-        value={checkIn}
-        onChangeText={setCheckIn}
-      />
+        selectedValue={checkOut}
+        onValueChange={(itemValue, itemIndex) => setCheckOut(itemValue)}
+      >
+        <Picker.Item label="Monday" />
+        <Picker.Item label="Tuesday" />
+        <Picker.Item label="Wednesday" />
+        <Picker.Item label="Thursday" />
+        <Picker.Item label="Friday" />
+      </Picker>
+      <Picker
+        style={styles.input}
+        selectedValue={checkOut}
+        onValueChange={(itemValue, itemIndex) => setCheckOut(itemValue)}
+      >
+        <Picker.Item label="Period" />
+        <Picker.Item label="Period 1" />
+        <Picker.Item label="Period 2" />
+        <Picker.Item label="Period 3" />
+        <Picker.Item label="Period 4" />
+        <Picker.Item label="Period 5" />
+        <Picker.Item label="Period 6" />
+        <Picker.Item label="Period 7" />
+        <Picker.Item label="Period 8" />
+        <Picker.Item label="Period 9" />
+      </Picker>
       <Picker
         style={styles.input}
         selectedValue={checkOut}
@@ -57,6 +84,7 @@ const App = () => {
         <Picker.Item label="Meeting" />
         <Picker.Item label="Group Project" />
         <Picker.Item label="Lab Work" />
+        <Picker.Item label="Other" />
       </Picker>
 
       <Button title="Search" onPress={handleSearch} />
