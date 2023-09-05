@@ -19,14 +19,11 @@ const App = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.post(
-        'http://your_backend_server_ip:3000/search',
-        {
-          destination,
-          checkIn,
-          checkOut,
-        },
-      )
+      const response = await axios.post('database.db', {
+        destination,
+        checkIn,
+        checkOut,
+      })
 
       setResults(response.data)
     } catch (error) {
