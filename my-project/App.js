@@ -61,12 +61,12 @@ const App = () => {
         selectedValue={Floor}
         onValueChange={(itemValue, itemIndex) => setFloor(itemValue)}
       >
-        <Picker.Item label="Floor" value="0" />
-        <Picker.Item label="Floor 1" value="1" />
-        <Picker.Item label="Floor 2" value="2" />
-        <Picker.Item label="Floor 3" value="3" />
-        <Picker.Item label="Floor 4" value="4" />
-        <Picker.Item label="Floor 5" value="5" />
+        <Picker.Item label="Floor" />
+        <Picker.Item label="Floor 1" />
+        <Picker.Item label="Floor 2" />
+        <Picker.Item label="Floor 3" />
+        <Picker.Item label="Floor 4" />
+        <Picker.Item label="Floor 5" />
       </Picker>
 
       <Picker
@@ -74,11 +74,11 @@ const App = () => {
         selectedValue={Date}
         onValueChange={(itemValue, itemIndex) => setDate(itemValue)}
       >
-        <Picker.Item label="Monday" value="Monday" />
-        <Picker.Item label="Tuesday" value="Tuesday" />
-        <Picker.Item label="Wednesday" value="Wednesday" />
-        <Picker.Item label="Thursday" value="Thursday" />
-        <Picker.Item label="Friday" value="Friday" />
+        <Picker.Item label="Monday" />
+        <Picker.Item label="Tuesday" />
+        <Picker.Item label="Wednesday" />
+        <Picker.Item label="Thursday" />
+        <Picker.Item label="Friday" />
       </Picker>
 
       <Picker
@@ -86,16 +86,16 @@ const App = () => {
         selectedValue={Period}
         onValueChange={(itemValue, itemIndex) => setPeriod(itemValue)}
       >
-        <Picker.Item label="Period" value="0" />
-        <Picker.Item label="Period 1" value="Period 1" />
-        <Picker.Item label="Period 2" value="Period 2" />
-        <Picker.Item label="Period 3" value="Period 3" />
-        <Picker.Item label="Period 4" value="Period 4" />
-        <Picker.Item label="Period 5" value="Period 5" />
-        <Picker.Item label="Period 6" value="Period 6" />
-        <Picker.Item label="Period 7" value="Period 7" />
-        <Picker.Item label="Period 8" value="Period 8" />
-        <Picker.Item label="Period 9" value="Period 9" />
+        <Picker.Item label="Period" />
+        <Picker.Item label="Period 1" />
+        <Picker.Item label="Period 2" />
+        <Picker.Item label="Period 3" />
+        <Picker.Item label="Period 4" />
+        <Picker.Item label="Period 5" />
+        <Picker.Item label="Period 6" />
+        <Picker.Item label="Period 7" />
+        <Picker.Item label="Period 8" />
+        <Picker.Item label="Period 9" />
       </Picker>
 
       <Button title="Search" onPress={handleSearch} />
