@@ -98,6 +98,19 @@ const App = () => {
         <Picker.Item label="Period 9" />
       </Picker>
 
+      <Picker
+        style={styles.input}
+        selectedValue={purpose}
+        onValueChange={(itemValue, itemIndex) => setPurpose(itemValue)}
+      >
+        <Picker.Item label="Select your Purpose" />
+        <Picker.Item label="Meeting" />
+        <Picker.Item label="Group work" />
+        <Picker.Item label="Lab" />
+        <Picker.Item label="Music" />
+        <Picker.Item label="Other" />
+      </Picker>
+
       <Button title="Search" onPress={handleSearch} />
 
       <FlatList
