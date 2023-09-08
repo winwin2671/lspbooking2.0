@@ -30,7 +30,7 @@ const App = () => {
     const query = `
       SELECT room
       FROM freeclass
-      WHERE floor = ? AND date = ? AND period = ? 
+      WHERE floor = ?
     `
 
     // Execute the query with parameters
