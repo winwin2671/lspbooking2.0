@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { View, Button, FlatList, Text, StyleSheet } from 'react-native'
+import {
+  SafeAreaView,
+  View,
+  Button,
+  FlatList,
+  Text,
+  StyleSheet,
+} from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Picker } from '@react-native-picker/picker'
 import SQLite from 'react-native-sqlite-storage'
 
+// const db = SQLite.openDatabase(
+//   {
+//     name: 'database',
+//     location: 'default',
+//   },
+//   () => {
+//     // Database opened successfully
+//     console.log('Database opened ')
+//   },
+//   // (error) => {
+//   //   console.error('Error opening database:', error)
+//   // },
+// )
+
 const App = () => {
-  const db = SQLite.openDatabase(
-    {
-      name: 'database.db',
-      location: 'default',
-    },
-    () => {
-      // Database opened successfully
-      console.log('Database opened ')
-    },
-    (error) => {
-      console.error('Error opening database:', error)
-    },
-  )
+  //bug here
 
   const [Floor, setFloor] = useState('')
-  const [Date, setDate] = useState('')
+  const [selectedDate, setselectedDate] = useState('')
   const [Period, setPeriod] = useState('')
   const [purpose, setPurpose] = useState('')
   const [results, setResults] = useState([])
@@ -37,7 +46,7 @@ const App = () => {
     db.transaction((tx) => {
       tx.executeSql(
         query,
-        [Floor, Date, Period],
+        [Floor],
         (tx, results) => {
           // Extract and set the results to the component's state
           const rows = results.rows
@@ -62,23 +71,24 @@ const App = () => {
         onValueChange={(itemValue, itemIndex) => setFloor(itemValue)}
       >
         <Picker.Item label="Floor" />
-        <Picker.Item label="Floor 1" />
-        <Picker.Item label="Floor 2" />
-        <Picker.Item label="Floor 3" />
-        <Picker.Item label="Floor 4" />
-        <Picker.Item label="Floor 5" />
+        <Picker.Item label="Floor 1" value="1" />
+        <Picker.Item label="Floor 2" value="2" />
+        <Picker.Item label="Floor 3" value="3" />
+        <Picker.Item label="Floor 4" value="4" />
+        <Picker.Item label="Floor 5" value="5" />
       </Picker>
 
       <Picker
         style={styles.input}
-        selectedValue={Date}
-        onValueChange={(itemValue, itemIndex) => setDate(itemValue)}
+        selectedValue={selectedDate}
+        onValueChange={(itemValue, itemIndex) => setselectedDate(itemValue)}
       >
-        <Picker.Item label="Monday" />
-        <Picker.Item label="Tuesday" />
-        <Picker.Item label="Wednesday" />
-        <Picker.Item label="Thursday" />
-        <Picker.Item label="Friday" />
+        <Picker.Item label="Day" />
+        <Picker.Item label="Monday" value="Mon" />
+        <Picker.Item label="Tuesday" value="Tue" />
+        <Picker.Item label="Wednesday" value="Wen" />
+        <Picker.Item label="Thursday" value="Thu" />
+        <Picker.Item label="Friday" value="Fri" />
       </Picker>
 
       <Picker
@@ -87,15 +97,15 @@ const App = () => {
         onValueChange={(itemValue, itemIndex) => setPeriod(itemValue)}
       >
         <Picker.Item label="Period" />
-        <Picker.Item label="Period 1" />
-        <Picker.Item label="Period 2" />
-        <Picker.Item label="Period 3" />
-        <Picker.Item label="Period 4" />
-        <Picker.Item label="Period 5" />
-        <Picker.Item label="Period 6" />
-        <Picker.Item label="Period 7" />
-        <Picker.Item label="Period 8" />
-        <Picker.Item label="Period 9" />
+        <Picker.Item label="Period 1" value="1" />
+        <Picker.Item label="Period 2" value="2" />
+        <Picker.Item label="Period 3" value="3" />
+        <Picker.Item label="Period 4" value="4" />
+        <Picker.Item label="Period 5" value="5" />
+        <Picker.Item label="Period 6" value="6" />
+        <Picker.Item label="Period 7" value="7" />
+        <Picker.Item label="Period 8" value="8" />
+        <Picker.Item label="Period 9" value="9" />
       </Picker>
 
       <Picker
@@ -115,11 +125,11 @@ const App = () => {
 
       <FlatList
         data={results}
-        keyExtractor={(item) => item.room.toString()} // Ensure 'room' is unique
+        keyExtractor={(item) => (item ? item.room.toString() : '')} // Ensure 'room' is unique
         renderItem={({ item }) => (
           <ListItem bottomDivider>
             <ListItem.Content>
-              <ListItem.Title>{item.room}</ListItem.Title>
+              <ListItem.Title>{item ? item.room : 'No data'}</ListItem.Title>
             </ListItem.Content>
           </ListItem>
         )}
