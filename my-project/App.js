@@ -10,10 +10,11 @@ import {
 import { ListItem } from 'react-native-elements'
 import { Picker } from '@react-native-picker/picker'
 
+//Error: URL.hostname is not implemented
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
-  'https://cjvslcpxzkwjnrfvfmdn.supabase.co',
+  'https://cjvslcpxzkwjnrfvfmdn.supabase.co', // {"message":"No API key found in request","hint":"No `apikey` request header or url param was found."}
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqdnNsY3B4emt3am5yZnZmbWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQ4MzI0NTIsImV4cCI6MjAxMDQwODQ1Mn0._zfFCngW8vJytf3n6NyV2NcWpUQ5egDmNSr1cOQd4sg',
 )
 
