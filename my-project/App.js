@@ -9,12 +9,11 @@ import {
 } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Picker } from '@react-native-picker/picker'
-
-//Error: URL.hostname is not implemented
+import 'react-native-url-polyfill/auto'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
-  'https://cjvslcpxzkwjnrfvfmdn.supabase.co', // {"message":"No API key found in request","hint":"No `apikey` request header or url param was found."}
+  'https://cjvslcpxzkwjnrfvfmdn.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqdnNsY3B4emt3am5yZnZmbWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQ4MzI0NTIsImV4cCI6MjAxMDQwODQ1Mn0._zfFCngW8vJytf3n6NyV2NcWpUQ5egDmNSr1cOQd4sg',
 )
 
@@ -29,11 +28,12 @@ const App = () => {
   const handleSearch = async () => {
     // Construct the query based on selected criteria
     const query = supabase.from('roomdb').select('room').eq('floor', Floor) // Filter by selected floor
-
+    console.log('pressed')
     try {
       // Execute the query
       const { data } = await query
 
+      console.log('Results:', data)
       // Update the results state with the filtered room data
       setResults(data)
     } catch (error) {
@@ -47,7 +47,13 @@ const App = () => {
         <Picker
           style={styles.input}
           selectedValue={Floor}
-          onValueChange={(itemValue, itemIndex) => setFloor(itemValue)}
+          onValueChange={(itemValue, itemIndex) => {
+            // itemValue: the selected value (e.g., '1' for 'Floor 1')
+            // itemIndex: the index of the selected item (0 for the first item, 1 for the second, and so on)
+            console.log(`Selected value: ${itemValue}`)
+            console.log(`Selected index: ${itemIndex}`)
+            setFloor(itemValue)
+          }}
         >
           <Picker.Item label="Floor" />
           <Picker.Item label="Floor 1" value="1" />
