@@ -27,10 +27,105 @@ const App = () => {
 
   const handleSearch = async () => {
     const dateperiod = selectedDate + Period
-    let Mon1status = ''
 
-    if (dateperiod === 'Mon1') {
-      Mon1status = 'F'
+    // Initialize an object to store filter values for each day
+    const dayFilters = {
+      Mon1: '',
+      Mon2: '',
+      Mon3: '',
+      Mon4: '',
+      Mon5: '',
+      Mon6: '',
+      Mon7: '',
+      Mon8: '',
+      Mon9: '',
+      Tue1: '',
+      Tue2: '',
+      Tue3: '',
+      Tue4: '',
+      Tue5: '',
+      Tue6: '',
+      Tue7: '',
+      Tue8: '',
+      Tue9: '',
+      Wed1: '',
+      Wed2: '',
+      Wed3: '',
+      Wed4: '',
+      Wed5: '',
+      Wed6: '',
+      Wed7: '',
+      Wed8: '',
+      Wed9: '',
+      Thu1: '',
+      Thu2: '',
+      Thu3: '',
+      Thu4: '',
+      Thu5: '',
+      Thu6: '',
+      Thu7: '',
+      Thu8: '',
+      Thu9: '',
+      Fri1: '',
+      Fri2: '',
+      Fri3: '',
+      Fri4: '',
+      Fri5: '',
+      Fri6: '',
+      Fri7: '',
+      Fri8: '',
+      Fri9: '',
+    }
+
+    // Set the filter value based on dateperiod
+    if (
+      dateperiod === 'Mon1' ||
+      dateperiod === 'Mon2' ||
+      dateperiod === 'Mon3' ||
+      dateperiod === 'Mon4' ||
+      dateperiod === 'Mon5' ||
+      dateperiod === 'Mon6' ||
+      dateperiod === 'Mon7' ||
+      dateperiod === 'Mon8' ||
+      dateperiod === 'Mon9' ||
+      dateperiod === 'Tue1' ||
+      dateperiod === 'Tue2' ||
+      dateperiod === 'Tue3' ||
+      dateperiod === 'Tue4' ||
+      dateperiod === 'Tue5' ||
+      dateperiod === 'Tue6' ||
+      dateperiod === 'Tue7' ||
+      dateperiod === 'Tue8' ||
+      dateperiod === 'Tue9' ||
+      dateperiod === 'Wed1' ||
+      dateperiod === 'Wed2' ||
+      dateperiod === 'Wed3' ||
+      dateperiod === 'Wed4' ||
+      dateperiod === 'Wed5' ||
+      dateperiod === 'Wed6' ||
+      dateperiod === 'Wed7' ||
+      dateperiod === 'Wed8' ||
+      dateperiod === 'Wed9' ||
+      dateperiod === 'Thu1' ||
+      dateperiod === 'Thu2' ||
+      dateperiod === 'Thu3' ||
+      dateperiod === 'Thu4' ||
+      dateperiod === 'Thu5' ||
+      dateperiod === 'Thu6' ||
+      dateperiod === 'Thu7' ||
+      dateperiod === 'Thu8' ||
+      dateperiod === 'Thu9' ||
+      dateperiod === 'Fri1' ||
+      dateperiod === 'Fri2' ||
+      dateperiod === 'Fri3' ||
+      dateperiod === 'Fri4' ||
+      dateperiod === 'Fri5' ||
+      dateperiod === 'Fri6' ||
+      dateperiod === 'Fri7' ||
+      dateperiod === 'Fri8' ||
+      dateperiod === 'Fri9'
+    ) {
+      dayFilters[dateperiod] = 'F'
     }
 
     // Construct the query based on selected criteria
@@ -41,8 +136,12 @@ const App = () => {
       query = query.eq('floor', Floor)
     }
 
-    // Add the combined value filter
-    query = query.eq('Mon1', Mon1status)
+    // Add the combined value filters for all days
+    for (const day in dayFilters) {
+      if (dayFilters[day]) {
+        query = query.eq(day, dayFilters[day])
+      }
+    }
 
     console.log('pressed')
     console.log(query)
@@ -58,6 +157,7 @@ const App = () => {
       console.error('Error searching for rooms:', error)
     }
   }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
