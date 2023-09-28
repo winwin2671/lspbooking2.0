@@ -26,8 +26,24 @@ const App = () => {
   const [roomdb, setRoom] = useState([])
 
   const handleSearch = async () => {
+    const dateperiod = selectedDate + Period
+    let Mon1status = ''
+
+    if (dateperiod === 'Mon1') {
+      Mon1status = 'F'
+    }
+
     // Construct the query based on selected criteria
-    const query = supabase.from('roomdb').select('room').eq('floor', Floor) // Filter by selected floor
+    let query = supabase.from('roomdb').select('room')
+
+    // Check if a floor value is selected, and include it in the filter if it is
+    if (Floor) {
+      query = query.eq('floor', Floor)
+    }
+
+    // Add the combined value filter
+    query = query.eq('Mon1', Mon1status)
+
     console.log('pressed')
     console.log(query)
     try {
@@ -49,8 +65,6 @@ const App = () => {
           style={styles.input}
           selectedValue={Floor}
           onValueChange={(itemValue, itemIndex) => {
-            // itemValue: the selected value (e.g., '1' for 'Floor 1')
-            // itemIndex: the index of the selected item (0 for the first item, 1 for the second, and so on)
             console.log(`Selected value: ${itemValue}`)
             console.log(`Selected index: ${itemIndex}`)
             setFloor(itemValue)
@@ -67,7 +81,7 @@ const App = () => {
         <Picker
           style={styles.input}
           selectedValue={selectedDate}
-          onValueChange={(itemValue, itemIndex) => setselectedDate(itemValue)}
+          onValueChange={(itemValue) => setselectedDate(itemValue)}
         >
           <Picker.Item label="Day" />
           <Picker.Item label="Monday" value="Mon" />
@@ -80,7 +94,7 @@ const App = () => {
         <Picker
           style={styles.input}
           selectedValue={Period}
-          onValueChange={(itemValue, itemIndex) => setPeriod(itemValue)}
+          onValueChange={(itemValue) => setPeriod(itemValue)}
         >
           <Picker.Item label="Period" />
           <Picker.Item label="Period 1" value="1" />
