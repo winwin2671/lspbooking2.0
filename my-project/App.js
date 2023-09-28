@@ -14,7 +14,7 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
   'https://cjvslcpxzkwjnrfvfmdn.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqdnNsY3B4emt3am5yZnZmbWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQ4MzI0NTIsImV4cCI6MjAxMDQwODQ1Mn0._zfFCngW8vJytf3n6NyV2NcWpUQ5egDmNSr1cOQd4sg',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqdnNsY3B4emt3am5yZnZmbWRuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NDgzMjQ1MiwiZXhwIjoyMDEwNDA4NDUyfQ.PJGJyRmABF9ifz4oxp5v-CSonFywIY4mrhcBnznNkjA',
 )
 
 const App = () => {
@@ -29,10 +29,11 @@ const App = () => {
     // Construct the query based on selected criteria
     const query = supabase.from('roomdb').select('room').eq('floor', Floor) // Filter by selected floor
     console.log('pressed')
+    console.log(query)
     try {
       // Execute the query
       const { data } = await query
-
+      console.log('floor:', Floor)
       console.log('Results:', data)
       // Update the results state with the filtered room data
       setResults(data)
@@ -126,7 +127,7 @@ const App = () => {
           />
         )}
       </View>
-      <Text>LSP room finder</Text>
+      <Text>----LSP room finder----</Text>
     </SafeAreaView>
   )
 }
