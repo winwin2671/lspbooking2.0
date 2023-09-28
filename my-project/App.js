@@ -28,6 +28,25 @@ const App = () => {
   const handleSearch = async () => {
     const dateperiod = selectedDate + Period
 
+    //Be note! will need to change line 35 - 132 to invidiual values if the booking function is implemented
+    {
+      /*
+      smth like this:
+      
+      if (dateperiod === 'Mon1') {
+      Mon1status = 'F'
+    }
+
+    else if (dateperiod == 'Mon2') {
+      Mon2status = 'F'
+    }
+
+    smth... 
+    query = query.eq('Mon1', Mon1status)
+    query = query.eq('Mon2', Mon2status)
+  */
+    }
+
     // Initialize an object to store filter values for each day
     const dayFilters = {
       Mon1: '',
