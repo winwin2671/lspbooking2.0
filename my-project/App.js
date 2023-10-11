@@ -246,7 +246,7 @@ const App = () => {
                     </View>
                     <View style={styles.bookingButton}>
                       <Button
-                        title="Booking"
+                        title="Book"
                         onPress={() => handleBooking(item.room)} // Add your booking function here
                       />
                     </View>
@@ -278,8 +278,8 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     borderWidth: 2,
-    borderColor: 'lightgray', // Border color
-    borderRadius: 5, // Border radius
+    borderColor: 'lightgray',
+    borderRadius: 5,
     marginBottom: 10,
   },
   cardContent: {
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     flex: 1, // Takes the left side of the card
   },
   bookingButton: {
-    marginLeft: 10, // Space between room info and button
+    marginLeft: 100, // Space between room info and button
   },
 })
 
