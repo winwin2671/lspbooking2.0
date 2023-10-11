@@ -28,23 +28,10 @@ const App = () => {
   const handleSearch = async () => {
     const dateperiod = selectedDate + Period
 
-    //Be note! will need to change line 35 - 132 to invidiual values if the booking function is implemented
-    {
-      /*
-      smth like this:
-      
-      if (dateperiod === 'Mon1') {
+    if (dateperiod == 'Mon1') {
       Mon1status = 'F'
-    }
-
-    else if (dateperiod == 'Mon2') {
+    } else if (dateperiod == 'Mon2') {
       Mon2status = 'F'
-    }
-
-    smth... 
-    query = query.eq('Mon1', Mon1status)
-    query = query.eq('Mon2', Mon2status)
-  */
     }
 
     // Initialize an object to store filter values for each day
@@ -249,11 +236,21 @@ const App = () => {
             data={results}
             keyExtractor={(item) => (item ? item.room.toString() : '')}
             renderItem={({ item }) => (
-              <ListItem bottomDivider>
+              <ListItem containerStyle={styles.cardContainer} bottomDivider>
                 <ListItem.Content>
-                  <ListItem.Title>
-                    {item ? item.room : 'No data'}
-                  </ListItem.Title>
+                  <View style={styles.cardContent}>
+                    <View style={styles.roomInfo}>
+                      <ListItem.Title>
+                        {item ? item.room : 'No data'}
+                      </ListItem.Title>
+                    </View>
+                    <View style={styles.bookingButton}>
+                      <Button
+                        title="Booking"
+                        onPress={() => handleBooking(item.room)} // Add your booking function here
+                      />
+                    </View>
+                  </View>
                 </ListItem.Content>
               </ListItem>
             )}
@@ -278,6 +275,22 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
+  },
+  cardContainer: {
+    borderWidth: 2,
+    borderColor: 'lightgray', // Border color
+    borderRadius: 5, // Border radius
+    marginBottom: 10,
+  },
+  cardContent: {
+    flexDirection: 'row', // Arrange child components in a row
+    justifyContent: 'space-between', // Space between child components
+  },
+  roomInfo: {
+    flex: 1, // Takes the left side of the card
+  },
+  bookingButton: {
+    marginLeft: 10, // Space between room info and button
   },
 })
 
