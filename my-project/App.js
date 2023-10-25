@@ -28,12 +28,6 @@ const App = () => {
   const handleSearch = async () => {
     const dateperiod = selectedDate + Period
 
-    if (dateperiod == 'Mon1') {
-      Mon1status = 'F'
-    } else if (dateperiod == 'Mon2') {
-      Mon2status = 'F'
-    }
-
     // Initialize an object to store filter values for each day
     const dayFilters = {
       Mon1: '',
@@ -176,7 +170,7 @@ const App = () => {
             setFloor(itemValue)
           }}
         >
-          <Picker.Item label="Floor" />
+          <Picker.Item label="Pick a Floor" />
           <Picker.Item label="Floor 1" value="1" />
           <Picker.Item label="Floor 2" value="2" />
           <Picker.Item label="Floor 3" value="3" />
@@ -189,7 +183,7 @@ const App = () => {
           selectedValue={selectedDate}
           onValueChange={(itemValue) => setselectedDate(itemValue)}
         >
-          <Picker.Item label="Day" />
+          <Picker.Item label="Pick a Day" />
           <Picker.Item label="Monday" value="Mon" />
           <Picker.Item label="Tuesday" value="Tue" />
           <Picker.Item label="Wednesday" value="Wen" />
@@ -202,7 +196,7 @@ const App = () => {
           selectedValue={Period}
           onValueChange={(itemValue) => setPeriod(itemValue)}
         >
-          <Picker.Item label="Period" />
+          <Picker.Item label="Pick a Period" />
           <Picker.Item label="Period 1" value="1" />
           <Picker.Item label="Period 2" value="2" />
           <Picker.Item label="Period 3" value="3" />
@@ -213,6 +207,8 @@ const App = () => {
           <Picker.Item label="Period 8" value="8" />
           <Picker.Item label="Period 9" value="9" />
         </Picker>
+
+        {/*  will implement this picker in the booking page and only show as the reason of booking for now
 
         <Picker
           style={styles.input}
@@ -225,7 +221,7 @@ const App = () => {
           <Picker.Item label="Lab" />
           <Picker.Item label="Music" />
           <Picker.Item label="Other" />
-        </Picker>
+        </Picker> */}
 
         <Button title="Search" onPress={handleSearch} />
 
@@ -245,10 +241,7 @@ const App = () => {
                       </ListItem.Title>
                     </View>
                     <View style={styles.bookingButton}>
-                      <Button
-                        title="Book"
-                        onPress={() => handleBooking(item.room)} // Add your booking function here
-                      />
+                      <Button title="Book" />
                     </View>
                   </View>
                 </ListItem.Content>
@@ -269,7 +262,7 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   input: {
-    width: '80%',
+    width: 190,
     marginBottom: 10,
     padding: 10,
     borderColor: 'gray',
@@ -281,16 +274,21 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     borderRadius: 5,
     marginBottom: 10,
+    padding: 10,
+    width: 280,
+    height: 70,
+    position: 'space-between',
   },
   cardContent: {
-    flexDirection: 'row', // Arrange child components in a row
-    justifyContent: 'space-between', // Space between child components
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   roomInfo: {
-    flex: 1, // Takes the left side of the card
+    flex: 1,
   },
   bookingButton: {
-    marginLeft: 100, // Space between room info and button
+    position: 'absolute',
+    left: 200,
   },
 })
 
