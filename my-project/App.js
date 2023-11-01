@@ -22,7 +22,7 @@ const App = () => {
   const [selectedDate, setselectedDate] = useState('')
   const [Period, setPeriod] = useState('')
   const [purpose, setPurpose] = useState('')
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState(null)
   const [roomdb, setRoom] = useState([])
 
   const handleSearch = async () => {
@@ -225,7 +225,9 @@ const App = () => {
 
         <Button title="Search" onPress={handleSearch} />
 
-        {results.length === 0 ? (
+        {results === null ? (
+          <text></text>
+        ) : results.length === 0 ? (
           <Text>No results found</Text>
         ) : (
           <FlatList
