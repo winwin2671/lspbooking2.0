@@ -17,7 +17,7 @@ const supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqdnNsY3B4emt3am5yZnZmbWRuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NDgzMjQ1MiwiZXhwIjoyMDEwNDA4NDUyfQ.PJGJyRmABF9ifz4oxp5v-CSonFywIY4mrhcBnznNkjA',
 )
 
-const App = () => {
+const MainApp = () => {
   const [Floor, setFloor] = useState('')
   const [selectedDate, setselectedDate] = useState('')
   const [Period, setPeriod] = useState('')
@@ -226,7 +226,7 @@ const App = () => {
         <Button title="Search" onPress={handleSearch} />
 
         {results === null ? (
-          <text></text>
+          <Text></Text>
         ) : results.length === 0 ? (
           <Text>No results found</Text>
         ) : (
@@ -294,4 +294,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default App
+export default MainApp
