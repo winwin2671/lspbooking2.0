@@ -9,13 +9,9 @@ const supabase = createClient(
 
 function Login({ navigation }) {
   async function loginWithGoogle() {
-    const { user, session, error } = await supabase.auth.signIn({
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
-  }
-
-  async function logout() {
-    const { error } = await supabase.auth.signOut()
   }
 
   return (
