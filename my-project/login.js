@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Button, SafeAreaView, StyleSheet } from 'react-native'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -9,18 +9,33 @@ const supabase = createClient(
 
 function Login({ navigation }) {
   async function loginWithGoogle() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-    })
+    // const { data, error } = await supabase.auth.signInWithOAuth({
+    //   provider: 'google',
+    // })
+
+    // //error here
+    // if (!error) {
+    //   navigation.navigate('Find Your Room')
+    // }
+    navigation.navigate('Find Your Room')
   }
 
   return (
-    <View>
-      <Text>Login Page</Text>
-      {/* Implement your login UI elements, buttons, and functionality */}
-      <Button title="Login with Google" onPress={loginWithGoogle} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Button title="Sign in with Google" onPress={loginWithGoogle} />
+      </View>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
+})
 
 export default Login
